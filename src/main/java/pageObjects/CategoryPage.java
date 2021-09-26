@@ -20,8 +20,8 @@ public class CategoryPage {
         PageFactory.initElements(driver, this);
     }
 
-    public WebElement getProductByName(Integer position, String product){
+    public WebElement getProductByName(String position, String product){
         return driver.findElement(By.xpath(String.format("//li[%s]//a[@class='product-name' and @title='%s']",position, product)));
-
     }
+
 }

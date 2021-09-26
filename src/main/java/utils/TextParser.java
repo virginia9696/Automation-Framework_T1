@@ -11,9 +11,11 @@ public class TextParser {
         String cartProductText = element.getText();
         Pattern pattern = Pattern.compile("[0-9]+");
         Matcher matcher = pattern.matcher(cartProductText);
-        matcher.find();
-        String qty = matcher.group(0);
-        return qty;
+        if (matcher.find()) {
+            return matcher.group();
+        } else {
+            return null;
+        }
     }
 
 }

@@ -12,7 +12,7 @@ public class HomePage {
 
     private WebDriver driver;
 
-    @FindBy(xpath = "//ul[@class='sf-menu clearfix menu-content sf-js-enabled sf-arrows']")
+    @FindBy(xpath = "//*[@id='block_top_menu']")
     private WebElement categoriesMenu;
 
     @FindBy(css = "i.icon-trash")
@@ -23,8 +23,8 @@ public class HomePage {
         PageFactory.initElements(driver, this);
     }
 
-    public WebElement getElementFromListByName(String elementName) {
-      return categoriesMenu.findElement(By.xpath(String.format("/descendant::a[@title='%s'][2]", elementName)));
+    public WebElement getElementFromListByPositionAndName(String categoryPosition, String elementName) {
+        return driver.findElement(By.xpath(String.format("//*[@id=\"block_top_menu\"]/ul/li[%s]/a[@title='%s']",categoryPosition, elementName)));
     }
 
 }
