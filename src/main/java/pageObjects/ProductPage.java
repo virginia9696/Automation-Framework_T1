@@ -46,4 +46,9 @@ public class ProductPage {
        return item;
     }
 
+    public String getProductName(int order){
+        return driver.findElement(By.xpath(
+                "/html/body/div/div[2]/div/div[3]/div[2]/ul/li[" + order + "]/div/div[2]/h5/a")).getText();
+    }
+
 }

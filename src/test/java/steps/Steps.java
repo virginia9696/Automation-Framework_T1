@@ -27,9 +27,9 @@ public class Steps {
         DriverFactory.getDriver().get(url);
     }
 
-    @When("selects {string} category from top bar menu")
-    public void selectCategoryFromTopBarMenu(String category) {
-       homePage.getElementFromListByName(category).click();
+    @When("selects {string} category order {int} from top bar menu")
+    public void selectCategoryFromTopBarMenu(String categoryName, int order) {
+       homePage.getElementFromListByName(categoryName, order).click();
         commonActions.waitUntilPageIsLoaded(DriverFactory.getDriver());
     }
 
@@ -70,5 +70,10 @@ public class Steps {
     public void itemWithNameIsDisplayedInTheShoppingCart(String itemName) {
         assertTrue(format("Displayed item name matches with expected: {}", productPage.itemDisplayed(itemName).getText()),
                 productPage.itemDisplayed(itemName).isDisplayed());
+    }
+
+    @And("get the name of the displayed product {int}")
+    public void getTheProductName(int order){
+        productPage.getProductName(order);
     }
 }

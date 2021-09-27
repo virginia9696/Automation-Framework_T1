@@ -23,8 +23,9 @@ public class HomePage {
         PageFactory.initElements(driver, this);
     }
 
-    public WebElement getElementFromListByName(String elementName) {
-      return categoriesMenu.findElement(By.xpath(String.format("/descendant::a[@title='%s'][2]", elementName)));
+    public WebElement getElementFromListByName(String elementName, int order) {
+        return categoriesMenu.findElement(By.xpath(String.format(
+                "/descendant::a[@title='%s']['%s]", elementName, order)));
     }
 
 }
