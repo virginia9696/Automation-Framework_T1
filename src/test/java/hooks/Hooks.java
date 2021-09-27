@@ -31,5 +31,4 @@ public class Hooks {
     public void quitBrowser() {
         driver.quit();
     }
-
 }
