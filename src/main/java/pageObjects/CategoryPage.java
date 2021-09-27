@@ -24,4 +24,15 @@ public class CategoryPage {
         return driver.findElement(By.xpath(String.format("//li[%s]//a[@class='product-name' and @title='%s']",position, product)));
     }
 
+    public String getProductName(int position){
+        WebElement webElement = driver.findElement(By.xpath((String.format("//li[%s]//a[@class='product-name']" , position))));
+        return webElement.getText();
+    }
+
+    public String searchProduct(String productName){
+        driver.findElement(By.id("search_query_top")).sendKeys(productName);
+        driver.findElement(By.name("submit_search")).click();
+        return getProductName(1);
+    }
+
 }

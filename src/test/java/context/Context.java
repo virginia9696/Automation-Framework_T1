@@ -2,5 +2,6 @@ package context;
 
 public enum Context {
 
-    ITEM_NAME
+    ITEM_NAME,
+    FOUND_PRODUCT
 }

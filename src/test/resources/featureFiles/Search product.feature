@@ -1,13 +1,13 @@
 Feature: Search functionality
 
-  Scenario Outline: Search product on search bar <description>
+  Scenario Outline: Search product on search bar from category <categoryName>
     Given user navigates on <url> page
-    When selects <categoryName> category order <categoryOrder> from top bar menu
-    And get the name of the displayed product <productOrder>
-    When enter product name in the search bar and click search button
-    Then actual displayed product is equal with expected product
+    When selects category <categoryOrder> with name <categoryName> from top bar menu
+    And get the name of the product <productOrder> order
+    When enter found product name in the search bar and click search button
+    Then The actual displayed product name is equal with expected product name
     Examples:
-      | url                              | categoryName | categoryOrder | productOrder | description |
-      | "http://automationpractice.com/" | "Women"      | 1             | 1            | Test        |
-      | "http://automationpractice.com/" | "Dresses"    | 2             | 2            | Yer         |
-      | "http://automationpractice.com/" | "T-shirts"   | 3             | 3            | DAta        |
+      | url                              | categoryName | categoryOrder | productOrder |
+      | "http://automationpractice.com/" | "Women"      | "1"           | 1            |
+      | "http://automationpractice.com/" | "Dresses"    | "2"           | 1            |
+      | "http://automationpractice.com/" | "T-shirts"   | "3"           | 1            |
