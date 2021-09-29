@@ -38,11 +38,6 @@ public class CheckoutPage {
         PageFactory.initElements(driver, this);
     }
 
-    public WebElement itemNameDisplayed(String itemName){
-        WebElement item = driver.findElement(By.xpath(format("//p//a[text()='%s']", itemName)));
-        return item;
-    }
-
     public void clickWithJavascript(String itemPosition, String btnName) {
         WebElement button = driver.findElement(By.xpath(format("//tbody/tr[position()=%s]//td/div/a[@title='%s']", itemPosition, btnName)));
         JavascriptExecutor executor = (JavascriptExecutor)driver;

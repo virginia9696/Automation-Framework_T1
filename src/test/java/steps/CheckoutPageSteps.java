@@ -1,6 +1,7 @@
 package steps;
 
 import actions.CommonActions;
+import context.Context;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -9,10 +10,10 @@ import pageObjects.CheckoutPage;
 import pageObjects.ProductPage;
 import utils.TextParser;
 
+import static context.ScenarioContext.getScenarioContext;
 import static driverManager.DriverFactory.getDriver;
 import static java.lang.String.format;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 @Slf4j
 public class CheckoutPageSteps {
@@ -45,12 +46,11 @@ public class CheckoutPageSteps {
         log.info(String.format("Removes item [%s] from shopping cart table, pressing on [%s] button", itemPosition, btnName));
     }
 
-    @And("item with name {string} is displayed in the shopping cart")
-    public void itemWithNameIsDisplayedInTheShoppingCart(String expecteditemName) {
-        assertTrue(format("Expected item with name [%s] is displayed in the shopping cart: ", expecteditemName),
-                checkoutPage.itemNameDisplayed(expecteditemName).isDisplayed());
-
-    }
+   @And("item with name {string} is displayed in the shopping cart")
+   public void itemWithNameIsDisplayedInTheShoppingCart(String expecteditemName) {
+       assertEquals(format("Expected item with name [%s] is displayed in the shopping cart: ",
+               expecteditemName),getScenarioContext().getData(Context.ITEM_NAME), expecteditemName);
+   }
 
     @Then("{string} item is displayed on shopping-cart summary")
     public void itemIsDisplayedOnShoppingCartSummary(String itemQty) {
