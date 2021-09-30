@@ -15,7 +15,6 @@ public class CategoryPage {
 
     @FindBy(xpath = "//ul[@class='product_list row list']")
     private WebElement productList;
-    private WebElement passwordImput;
 
     public CategoryPage(WebDriver driver) {
         this.driver = driver;
@@ -37,11 +36,4 @@ public class CategoryPage {
         return getProductName(1);
     }
 
-    public WebElement getEmailAddressImput() {
-        return getEmailAddressImput();
-    }
-
-    public WebElement getPasswordImput() {
-        return passwordImput;
-    }
 }
