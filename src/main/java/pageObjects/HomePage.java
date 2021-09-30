@@ -15,9 +15,6 @@ public class HomePage {
     @FindBy(xpath = "//*[@id='block_top_menu']")
     private WebElement categoriesMenu;
 
-    @FindBy(css = "i.icon-trash")
-    private WebElement deleteBtn;
-
     public HomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
