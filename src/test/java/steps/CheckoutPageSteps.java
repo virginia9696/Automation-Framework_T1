@@ -62,4 +62,16 @@ public class CheckoutPageSteps {
                 itemQty, actualItemQty);
 
     }
-}
+    @Then("authentication page is displayed")
+    public void authenticationPageDisplayed(String registry) {
+        commonActions.waitUntilPageIsLoaded(getDriver());
+
+    }
+    @When("authentication done successfully")
+    public void authenticationSuccessfully(String loged){
+        commonActions.waitUntilPageIsLoaded(checkoutPage.getDriver());
+        assertEquals((format("Success message is displayed", "Welcome to your account!", loged)), loged);
+        System.out.println(getDriver().getCurrentUrl());
+    }
+
+    }

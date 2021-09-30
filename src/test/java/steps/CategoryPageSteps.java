@@ -5,10 +5,14 @@ import context.Context;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.cucumber.datatable.DataTable;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pageObjects.CategoryPage;
 
+import java.util.List;
 import java.util.Objects;
 
 import static context.ScenarioContext.getScenarioContext;
@@ -45,6 +49,23 @@ public class CategoryPageSteps {
         String expectedProduct = getScenarioContext().getData(Context.FOUND_PRODUCT).toString();
         Assert.assertTrue(actualProduct.equalsIgnoreCase(expectedProduct));
     }
+    @When("valid email address is inserted")
+    public void validDataIsInserted(){
+        WebElement emailaddress = getDriver().findElement(By.xpath("//input[@id= 'email']"));
+        emailaddress.sendKeys("yopmail.an@yopmail.com");
+    }
+    @When("valid password is inserted")
+    public void validpasswordIsInserted(){
+        WebElement password = getDriver().findElement(By.xpath("//input[@id= 'password']"));
+        password.sendKeys("11121314");
 
+//    @When("user insert data in fields")
+//    public void insertDataInFields (DataTable data){
+//
+//        List<String> insertValue = data.asList();
+//
+//        categoryPage.getEmailAddressImput().sendKeys(insertValue.get(0));
+//        categoryPage.getPasswordImput().sendKeys(insertValue.get(1));
+    }
 
-}
+    }
